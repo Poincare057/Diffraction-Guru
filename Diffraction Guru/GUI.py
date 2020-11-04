@@ -2,7 +2,8 @@ from tkinter import *
 from Monte_Carlo_Fresnel import *
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.figure import Figure 
+from matplotlib.figure import Figure
+from matplotlib import cm
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,  
 NavigationToolbar2Tk) 
   
@@ -13,7 +14,7 @@ def pl():
     pat = pattern(sxsize.get()*10**-6, sysize.get()*10**-6, sz.get(), sl.get()*10**-6)
     kstep = (sxsize.get()*10**-6 + sysize.get()*10**-6)/2
     k = 30 #Same k as used in random sampling part of Monte_Carlo_Frensel.pattern()
-    fig.add_subplot(111).contourf(np.linspace(-k*0.5*kstep, k*0.5*kstep, k), np.linspace(-k*0.5*kstep, k*0.5*kstep, k), pat)
+    fig.add_subplot(111).contourf(np.linspace(-k*0.5*kstep, k*0.5*kstep, k), np.linspace(-k*0.5*kstep, k*0.5*kstep, k), pat, cmap = cm.plasma)
     canvas = FigureCanvasTkAgg(fig, master = master)   
     canvas.draw() 
     canvas.get_tk_widget().grid(row=500, column=10)

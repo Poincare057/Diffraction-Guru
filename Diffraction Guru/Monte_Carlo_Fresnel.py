@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 pi = 3.1415926535
 def E(x,y,z = 2,l = 0.000006):
     ''' integrand of fresnel-kirchoff diffraction integral'''
-    return complex(z*np.cos(2*pi*(x**2 + y**2 + z**2)**(0.5)), z*np.sin(2*pi*(x**2 + y**2 + z**2)**(0.5)))
+    return complex(z*(x**2 + y**2 + z**2)**(-2)*np.cos(2*pi*(x**2 + y**2 + z**2)**(0.5)/l), z*(x**2 + y**2 + z**2)**(-2)*np.sin(2*pi*(x**2 + y**2 + z**2)**(0.5)/l))
 
 def pattern(xsize = 0.003, ysize = 0.00003, z = 1, l = 0.000006):
     V = xsize*ysize   #area
