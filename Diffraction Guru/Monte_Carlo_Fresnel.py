@@ -10,8 +10,8 @@ def E(x,y,z = 2,l = 0.000006):
 
 def pattern(xsize = 0.003, ysize = 0.00003, z = 1, l = 0.000006):
     V = xsize*ysize   #area
-    n = 30              #number of points to sample at
-    k = 30              #O(k^2) is number of points at which field components (and hence intensity) are calculated
+    n = 35              #number of points to sample at
+    k = 35              #O(k^2) is number of points at which field components (and hence intensity) are calculated
     kstep = (xsize + ysize)/2         #Step size for above side lengths
 
     #Random Sampling

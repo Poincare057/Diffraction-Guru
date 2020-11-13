@@ -8,16 +8,16 @@ from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
 NavigationToolbar2Tk) 
   
 def pl():
-    fig = Figure(figsize=(3, 3), dpi=100)
+    fig = Figure(figsize=(5, 5), dpi=100)
     #fig, ax = plt.subplots(1,1)
     #ax.contourf(pattern(sxsize.get()*10**-6, sysize.get()*10**-6, sz.get(), sl.get()*10**-6))
     pat = pattern(sxsize.get()*10**-6, sysize.get()*10**-6, sz.get(), sl.get()*10**-6)
     kstep = (sxsize.get()*10**-6 + sysize.get()*10**-6)/2
-    k = 30 #Same k as used in random sampling part of Monte_Carlo_Frensel.pattern()
+    k = 35 #Same k as used in random sampling part of Monte_Carlo_Frensel.pattern()
     fig.add_subplot(111).contourf(np.linspace(-k*0.5*kstep, k*0.5*kstep, k), np.linspace(-k*0.5*kstep, k*0.5*kstep, k), pat, cmap = cm.plasma)
     canvas = FigureCanvasTkAgg(fig, master = master)   
     canvas.draw() 
-    canvas.get_tk_widget().place(x=2000, y=0)
+    canvas.get_tk_widget().place(x=800, y=100)
 
 def open():
     top=Tk()
@@ -30,29 +30,25 @@ master = Tk()
 master.title('Diffraction Guru')
 master.geometry("2000x2000")
 frame=LabelFrame(master, text="For Diffraction Pattern\nClick here", padx=10, pady=10)
-frame.place(x=10, y=500)
+frame.place(x=60, y=400)
 label1=Label(master, text="Diffraction Guru", font=('arial',30,'bold','italic'))
-label1.place(x=300, y=0)
-sxsize = Scale(master, label="x length(micro m)", from_=0, to=3000, orient='horizontal', length = 500)
+label1.place(x=500, y=0)
+sxsize = Scale(master, label="x length(micro m)", from_=0, to=3000, orient='horizontal', length = 600)
 sxsize.set(3)
 sxsize.place(x = 10, y = 100)
-sysize = Scale(master, label="y length(micro m)", from_=0, to=3000, orient='horizontal', length = 500)
+sysize = Scale(master, label="y length(micro m)", from_=0, to=3000, orient='horizontal', length = 600)
 sysize.set(3000)
-sysize.place(x = 10, y = 200)
-sz = Scale(master, label="Screen distance(m)", from_=0, to=10, orient='horizontal', length = 500)
+sysize.place(x = 10, y = 160)
+sz = Scale(master, label="Screen distance(m)", from_=0, to=10, orient='horizontal', length = 600)
 sz.set(1)
-sz.place(x = 10, y = 300)
-sl = Scale(master, label="Wavelength", from_=0, to=3000, orient='horizontal', length = 500)
+sz.place(x = 10, y = 220)
+sl = Scale(master, label="Wavelength", from_=0, to=3000, orient='horizontal', length = 600)
 sl.set(6)
-sl.place(x = 10, y = 400)
+sl.place(x = 10, y = 280)
 b = Button(frame, text = "PLOT", command=pl, fg="red", bg="yellow")
-b.place(x = 10, y = 500)
-##btn = Button(master, text = "To know more about this app\nClick here", bg="lightblue",command=open)
-##btn.grid(row=20, column=500)
-
-
-
-
+b.grid(row=300, column = 100)
+btn = Button(master, text = "To know more about this app\nClick here", bg="lightblue",command=open)
+btn.place(x=30, y=600)
 
 
 master.mainloop()
